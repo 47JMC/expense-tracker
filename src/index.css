@@ -10,6 +10,9 @@
 :root {
   --background: #000;
   --foreground: #fff;
+
+  --font-fredoka: "Fredoka", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
 }
 
 body {
