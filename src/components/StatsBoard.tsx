@@ -1,4 +1,12 @@
-function StatsBoard({ total }: { total: number }) {
+import type { Expense } from "../pages/Dashboard";
+
+function StatsBoard({
+  total,
+  highestExpense,
+}: {
+  total: number;
+  highestExpense: Expense | null;
+}) {
   return (
     <div className="p-2 m-2 flex rounded-lg gap-5">
       <div className="font-['Outfit'] p-3 rounded-lg border-2 m-2 bg-slate-900 border-sky-500">
@@ -11,7 +19,9 @@ function StatsBoard({ total }: { total: number }) {
       </div>
       <div className="font-['Outfit'] p-3 rounded-lg border-2 m-2 bg-slate-900 border-orange-400">
         <p className="text-lg">Highest Expense</p>
-        <p className="text-xl text-orange-300 text-center">$57000</p>
+        <p className="text-xl text-orange-300 text-center">
+          ${highestExpense?.amount}
+        </p>
       </div>
     </div>
   );

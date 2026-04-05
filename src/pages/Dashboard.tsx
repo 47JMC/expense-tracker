@@ -24,8 +24,6 @@ function Dashboard() {
 
     if (!date) date = new Date().toISOString().split("T")[0];
 
-    console.log({ reason, amount, category, date });
-
     setExpenses((prev) => [
       ...prev,
       {
@@ -38,22 +36,42 @@ function Dashboard() {
     ]);
   };
 
+  const handleRemoveExpense = (id: string) => {
+    setExpenses((prev) => prev.filter((expense) => expense.id !== id));
+  };
+
+  const formatAmount = (amount: number) => {
+    return new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
+  const highest = expenses.length
+    ? expenses.reduce(
+        (max, expense) => (expense.amount > max.amount ? expense : max),
+        expenses[0],
+      )
+    : null;
+
   const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
 
   return (
     <div className="min-h-screen flex flex-col gap-1 items-center">
-      <StatsBoard total={total} />
+      <StatsBoard total={total} highestExpense={highest} />
       <InputBox action={handleAddExpense} />
       <CurrencySelector value={currency} onChange={setCurrency} />
       <div className="rounded-lg m-5 p-5">
         {expenses.map((expense) => (
           <ExpenseEntry
+            id={expense.id}
             key={expense.id}
-            amount={expense.amount}
+            formattedAmount={formatAmount(expense.amount)}
             reason={expense.reason}
             date={expense.date}
             category={expense.category}
-            currency={currency}
+            onDelete={handleRemoveExpense}
           />
         ))}
       </div>

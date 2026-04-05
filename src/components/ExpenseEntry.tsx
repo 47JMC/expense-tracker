@@ -27,26 +27,25 @@ const CATEGORY_CONFIG: Record<string, { icon: string; color: string }> = {
 };
 
 type Props = {
-  amount: number;
+  id: string;
+  formattedAmount: string;
   reason: string;
   category: string;
   date: string;
-  currency: string;
+  onDelete: (id: string) => void;
 };
 
-function ExpenseEntry({ reason, amount, category, date, currency }: Props) {
+function ExpenseEntry({
+  id,
+  reason,
+  formattedAmount,
+  category,
+  date,
+  onDelete,
+}: Props) {
   const config = CATEGORY_CONFIG[category] ?? CATEGORY_CONFIG["Other"];
 
-  const formattedDate = new Date(date).toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "short",
-  });
-
-  const formattedAmount = new Intl.NumberFormat(undefined, {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  }).format(amount);
+  const formattedDate = date.replaceAll("-", "/");
 
   return (
     <div className="group flex items-center gap-4 px-4 py-3 m-2 rounded-xl border border-slate-700/50 bg-slate-800/60 hover:bg-slate-800 hover:border-slate-600 transition-all duration-200 cursor-default">
@@ -70,10 +69,18 @@ function ExpenseEntry({ reason, amount, category, date, currency }: Props) {
         </div>
       </div>
 
-      {/* Amount */}
-      <p className="font-['Fredoka'] font-semibold text-lg text-blue-400 shrink-0">
-        {formattedAmount}
-      </p>
+      {/* Amount and Delete button */}
+      <div className="flex gap-2 items-center">
+        <p className="font-['Fredoka'] font-semibold text-lg text-blue-400 shrink-0">
+          {formattedAmount}
+        </p>
+        <button
+          onClick={() => onDelete(id)}
+          className="rounded-lg border-2 text-[15px] font-['Fredoka'] hover:bg-red-500 hover:border-red-400 transition-all py-1 px-2 m-1"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }
