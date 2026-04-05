@@ -2,7 +2,7 @@ import StatsBoard from "../components/StatsBoard";
 import InputBox from "../components/InputBox";
 import ExpenseEntry from "../components/ExpenseEntry";
 import CurrencySelector from "../components/CurrencySelector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type Expense = {
   id: string;
@@ -13,8 +13,22 @@ export type Expense = {
 };
 
 function Dashboard() {
-  const [expenses, setExpenses] = useState<Expense[]>([]);
-  const [currency, setCurrency] = useState("INR");
+  const [expenses, setExpenses] = useState<Expense[]>(() => {
+    const stored = localStorage.getItem("expenses");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  const [currency, setCurrency] = useState<string>(() => {
+    return localStorage.getItem("currency") ?? "INR";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }, [expenses]);
+
+  useEffect(() => {
+    localStorage.setItem("currency", currency);
+  }, [currency]);
 
   const handleAddExpense = (formData: FormData) => {
     const reason = formData.get("reason") as string;
@@ -59,7 +73,12 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen flex flex-col gap-1 items-center">
-      <StatsBoard total={total} highestExpense={highest} />
+      <StatsBoard
+        total={total}
+        highestExpense={highest}
+        format={formatAmount}
+        currency={currency}
+      />
       <InputBox action={handleAddExpense} />
       <CurrencySelector value={currency} onChange={setCurrency} />
       <div className="rounded-lg m-5 p-5">

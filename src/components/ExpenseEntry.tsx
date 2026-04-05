@@ -56,7 +56,7 @@ function ExpenseEntry({
 
       {/* Main info */}
       <div className="flex-1 min-w-0">
-        <p className="font-['Fredoka'] font-medium text-base text-white leading-tight truncate">
+        <p className="font-['Fredoka'] text-base text-white leading-tight truncate">
           {reason}
         </p>
         <div className="flex items-center gap-2 mt-0.5">
