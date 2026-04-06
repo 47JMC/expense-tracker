@@ -63,6 +63,7 @@ function SpendingTrendChart({ expenses, format }: ChartProps) {
                 month: "short",
               })
             }
+            itemStyle={{ color: "#7497D6" }}
           />
           <Line
             type="monotone"
