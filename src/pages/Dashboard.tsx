@@ -2,15 +2,11 @@ import StatsBoard from "../components/StatsBoard";
 import InputBox from "../components/InputBox";
 import ExpenseEntry from "../components/ExpenseEntry";
 import CurrencySelector from "../components/CurrencySelector";
+import DailyChart from "../components/DailyChart";
+import CategoryChart from "../components/CategoryChart";
 import { useEffect, useState } from "react";
 
-export type Expense = {
-  id: string;
-  amount: number;
-  reason: string;
-  category: string;
-  date: string;
-};
+import type { Expense } from "../../lib/types";
 
 function Dashboard() {
   const [expenses, setExpenses] = useState<Expense[]>(() => {
@@ -81,6 +77,10 @@ function Dashboard() {
       />
       <InputBox action={handleAddExpense} />
       <CurrencySelector value={currency} onChange={setCurrency} />
+      <div className="flex flex-col lg:flex-row gap-4 w-full px-4">
+        <DailyChart expenses={expenses} format={formatAmount} />
+        <CategoryChart expenses={expenses} format={formatAmount} />
+      </div>
       <div className="rounded-lg m-5 p-5">
         {expenses.map((expense) => (
           <ExpenseEntry

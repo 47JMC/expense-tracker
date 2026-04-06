@@ -1,4 +1,4 @@
-import type { Expense } from "../pages/Dashboard";
+import type { Expense } from "../../lib/types";
 
 function StatsBoard({
   total,
