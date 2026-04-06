@@ -6,15 +6,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import type { Expense } from "../../lib/types";
+import type { ChartProps } from "../../lib/types";
 
-function DailyChart({
-  expenses,
-  format,
-}: {
-  expenses: Expense[];
-  format: (amount: number) => string;
-}) {
+function DailyChart({ expenses, format }: ChartProps) {
   const data = Object.entries(
     expenses.reduce<Record<string, number>>((acc, e) => {
       acc[e.date] = (acc[e.date] ?? 0) + e.amount;
