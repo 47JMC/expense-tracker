@@ -1,5 +1,5 @@
 import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
-import type { ChartProps } from "../../lib/types";
+import type { ChartProps } from "../../../lib/types";
 
 const CATEGORY_COLORS: Record<string, string> = {
   Food: "#38bdf8",

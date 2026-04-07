@@ -1,4 +1,4 @@
-import DemoChart from "../components/DemoChart";
+import DemoChart from "../components/charts/DemoChart";
 
 function Home() {
   return (

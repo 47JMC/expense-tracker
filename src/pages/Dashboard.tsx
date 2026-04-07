@@ -2,8 +2,8 @@ import StatsBoard from "../components/StatsBoard";
 import InputBox from "../components/InputBox";
 import ExpenseEntry from "../components/ExpenseEntry";
 import CurrencySelector from "../components/CurrencySelector";
-import DailyChart from "../components/DailyChart";
-import CategoryChart from "../components/CategoryChart";
+import DailyChart from "../components/charts/DailyChart";
+import CategoryChart from "../components/charts/CategoryChart";
 import { useEffect, useState } from "react";
 
 import type { Expense } from "../../lib/types";

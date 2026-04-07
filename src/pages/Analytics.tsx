@@ -1,6 +1,5 @@
-import SpendingTrendChart from "../components/SpendingTrendChart";
-import WeeklySpendingChart from "../components/WeeklySpendingChart";
-import Navbar from "../components/Navbar";
+import SpendingTrendChart from "../components/charts/SpendingTrendChart";
+import WeeklySpendingChart from "../components/charts/WeeklySpendingChart";
 
 import type { Expense } from "../../lib/types";
 
@@ -29,7 +28,6 @@ function Analytics() {
 
   return (
     <div className="flex flex-col gap-4">
-      <Navbar />
       <h1 className="font-['Fredoka'] text-2xl text-white">Analytics</h1>
       <div className="flex lg:flex-row gap-2 *:m-1 overflow-hidden flex-col">
         <SpendingTrendChart expenses={expenses} format={format} />

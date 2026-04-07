@@ -6,7 +6,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import type { ChartProps } from "../../lib/types";
+import type { ChartProps } from "../../../lib/types";
 
 function SpendingTrendChart({ expenses, format }: ChartProps) {
   const data = [...expenses]
