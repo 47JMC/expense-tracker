@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 const LINKS = [
   { path: "/dashboard", label: "Dashboard", icon: "⊞" },
   { path: "/analytics", label: "Analytics", icon: "↗" },
+  { path: "/transactions", label: "Transactions", icon: "💹" },
 ];
 
 function Sidebar() {
