@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
+import Transactions from "./pages/Transactions";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/analytics" element={<Analytics />} />
+        <Route path="/transactions" element={<Transactions />} />
       </Routes>
     </div>
   );
