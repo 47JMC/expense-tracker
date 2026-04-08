@@ -6,23 +6,15 @@ type Props = {
   reason: string;
   category: string;
   date: string;
-  onDelete: (id: string) => void;
 };
 
-function ExpenseEntry({
-  id,
-  reason,
-  formattedAmount,
-  category,
-  date,
-  onDelete,
-}: Props) {
+function ExpensePreview({ reason, formattedAmount, category, date }: Props) {
   const config = CATEGORY_CONFIG[category] ?? CATEGORY_CONFIG["Other"];
 
   const formattedDate = date.replaceAll("-", "/");
 
   return (
-    <div className="group flex items-center gap-4 px-4 py-3 m-2 rounded-xl border border-slate-700/50 bg-slate-800/60 hover:bg-slate-800 hover:border-slate-600 transition-all duration-200 cursor-default">
+    <div className="flex items-center gap-4 px-4 py-3 m-2 rounded-xl border border-slate-700/50 bg-slate-800/60">
       {/* Category icon */}
       <div className="text-xl w-9 h-9 flex items-center justify-center rounded-lg bg-slate-700/50 shrink-0">
         {config.icon}
@@ -43,20 +35,12 @@ function ExpenseEntry({
         </div>
       </div>
 
-      {/* Amount and Delete button */}
-      <div className="flex gap-2 items-center">
-        <p className="font-['Fredoka'] font-semibold text-lg text-blue-400 shrink-0">
-          {formattedAmount}
-        </p>
-        <button
-          onClick={() => onDelete(id)}
-          className="rounded-lg border-2 text-[15px] font-['Fredoka'] hover:bg-red-500 hover:border-red-400 transition-all py-1 px-2 m-1"
-        >
-          Delete
-        </button>
-      </div>
+      {/* Amount only (no delete) */}
+      <p className="font-['Fredoka'] font-semibold text-lg text-blue-400 shrink-0">
+        {formattedAmount}
+      </p>
     </div>
   );
 }
 
-export default ExpenseEntry;
+export default ExpensePreview;
