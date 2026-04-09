@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const LINKS = [
   { path: "/dashboard", label: "Dashboard", icon: "⊞" },
@@ -36,8 +36,8 @@ function Sidebar() {
       <div
         className={`fixed top-0 left-0 h-full w-64 z-50 bg-slate-900 border-r border-slate-800 p-6 flex flex-col gap-2 transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <p className="font-['Fredoka'] text-white text-xl mb-6">
-          Expense Tracker
+        <p className="font-['Fredoka'] font-bold text-white text-xl mb-6">
+          <Link to="/">ExpenseX</Link>
         </p>
 
         {LINKS.map((link) => (
