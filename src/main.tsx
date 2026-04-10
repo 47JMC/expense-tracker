@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard.tsx";
 import Analytics from "./pages/Analytics.tsx";
 import Transactions from "./pages/Transactions.tsx";
 import Home from "./pages/Home.tsx";
+import NotFound from "./pages/NotFound.tsx";
 
 const pages = [
   { path: "/", element: <Home /> },
@@ -17,7 +18,7 @@ const pages = [
 ];
 
 const router = createBrowserRouter([
-  { path: "/", element: <App />, children: pages },
+  { path: "/", element: <App />, children: pages, errorElement: <NotFound /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(
