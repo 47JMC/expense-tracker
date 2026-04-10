@@ -19,8 +19,8 @@ function DemoLineChart() {
   ];
 
   return (
-    <div className="w-full rounded-xl p-6 bg-slate-950">
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="w-full rounded-xl lg:p-3 bg-slate-950">
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart
           data={data}
           margin={{ top: 0, right: 20, bottom: 0, left: 0 }}

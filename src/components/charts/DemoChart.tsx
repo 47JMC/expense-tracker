@@ -24,7 +24,6 @@ function DemoChart() {
       amount: 700,
       fill: "#24C74E",
     },
-    { date: "Wed", amount: 700, fill: "#24C74E" },
     { date: "Thu", amount: 2100, fill: "#38bdf8" },
     { date: "Fri", amount: 3200, fill: "#a78bfa" },
     { date: "Sat", amount: 1800, fill: "#f472b6" },
@@ -32,8 +31,8 @@ function DemoChart() {
   ];
 
   return (
-    <div className="w-full rounded-xl p-6 bg-slate-950">
-      <ResponsiveContainer height={300}>
+    <div className="w-full rounded-xl lg:p-3 bg-slate-950">
+      <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} barCategoryGap="15%">
           <XAxis dataKey="date" />
           <YAxis />
